@@ -1,4 +1,4 @@
 # base
 A testing project for Integradevs Academy
 
-![example workflow file path](https://github.com/MatiasGonzalezRomeroAcademy/workflows/.github/workflows/ci.yml/badge.svg)
+![example workflow file path](https://github.com/MatiasGonzalezRomeroAcademy/base>/workflows/Java%20CI%20with%20Maven/badge.svg)
