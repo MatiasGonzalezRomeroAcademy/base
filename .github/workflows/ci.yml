@@ -1,4 +1,4 @@
-name: mastert-build
+name: master-build
 
 on:
   push:
