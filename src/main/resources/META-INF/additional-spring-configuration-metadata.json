@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "security.jwt.jwtExpirationInMs",
+    "type": "java.lang.String",
+    "description": "A description for 'security.jwt.jwtExpirationInMs'"
+  },
+  {
+    "name": "security.jwt.secretKey",
+    "type": "java.lang.String",
+    "description": "A description for 'security.jwt.secretKey'"
+  },
+  {
+    "name": "files.upload.root",
+    "type": "java.lang.String",
+    "description": "A description for 'files.upload.root'"
+  }
+]}

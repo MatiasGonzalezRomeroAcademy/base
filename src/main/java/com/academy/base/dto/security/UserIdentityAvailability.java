@@ -1,0 +1,9 @@
+package com.academy.base.dto.security;
+
+public class UserIdentityAvailability {
+	private Boolean available;
+
+	public UserIdentityAvailability(Boolean available) {
+		this.available = available;
+	}
+}

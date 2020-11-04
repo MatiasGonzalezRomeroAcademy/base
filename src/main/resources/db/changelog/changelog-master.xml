@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+ 
+    <include file="/db/changelog/changes/1-create-projects-table-changelog.xml"/>
+    <include file="/db/changelog/changes/2-create-project-details-table-changelog.xml"/>
+    <include file="/db/changelog/changes/3-create-tags-table-changelog.xml"/>
+    <include file="/db/changelog/changes/4-create-project-tags-table-changelog.xml"/>
+    <include file="/db/changelog/changes/5-create-project-tasks-table-changelog.xml"/>
+    <include file="/db/changelog/changes/6-create-rooms-table-changelog.xml"/>
+    <include file="/db/changelog/changes/7-create-users-table-changelog.xml"/>
+    <include file="/db/changelog/changes/8-create-roles-table-changelog.xml"/>
+    <include file="/db/changelog/changes/9-create-images-table-changelog.xml"/>
+  
+    <include file="/db/changelog/data/1-insert-rooms-data.xml"/>
+    <include file="/db/changelog/data/2-insert-projects-data.xml"/>
+ 
+</databaseChangeLog>

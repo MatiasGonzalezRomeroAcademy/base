@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="ivan" id="4">
+		<createTable tableName="project_tags">
+			<column autoIncrement="true" name="ID" type="INT">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="project_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_projectTags_project" referencedTableName="projects" referencedColumnNames="id" />
+			</column>
+			<column name="tag_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_proyectTags_tags" referencedTableName="tags" referencedColumnNames="id" />
+			</column>
+		</createTable>
+		<rollback>
+			<dropTable tableName="project_tags" />
+		</rollback>
+	</changeSet>
+
+</databaseChangeLog>
