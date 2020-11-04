@@ -22,6 +22,11 @@ public class CalculatorController {
 		this.calculatorService = calculatorService;
 	}
 
+	@GetMapping("/greetings")
+	public String greeting() {
+		return "Hi, deployed from WAR file";
+	}
+
 	@GetMapping("/has_battery")
 	public boolean isAlive() {
 		return true;
