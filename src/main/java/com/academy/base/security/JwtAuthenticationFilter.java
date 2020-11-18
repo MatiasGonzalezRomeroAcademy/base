@@ -3,7 +3,6 @@ package com.academy.base.security;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -43,7 +42,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 		String password = obtainUsername(request);
 
 		UserEntity user = null;
-		if (username == null || password  == null) {
+		if (username == null || password == null) {
 			log.debug("Username and Password error");
 			throw new IllegalArgumentException("Username or Password error");
 		}
