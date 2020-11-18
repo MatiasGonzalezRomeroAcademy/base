@@ -14,11 +14,12 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Slf4j
 public class ScheduledTask {
+	private static final String EXECUTION = "Execution";
 	private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 	// @Scheduled(fixedRate = 2000)
 	public void scheduleTaskWithFixedRate() {
-		logTaskInfo("Fixed Rate", "Execution");
+		logTaskInfo("Fixed Rate", EXECUTION);
 	}
 
 	// @Scheduled(fixedDelay = 2000)
@@ -28,7 +29,7 @@ public class ScheduledTask {
 
 	// @Scheduled(fixedRate = 2000, initialDelay = 5000)
 	public void scheduleTaskWithInitialDelay() {
-		logTaskInfo("Fixed Rate", "Execution");
+		logTaskInfo("Fixed Rate", EXECUTION);
 	}
 
 	@Scheduled(cron = "* * * * * ?")
@@ -42,7 +43,7 @@ public class ScheduledTask {
 	}
 
 	private void doTaskWithExcutionTime(final String taskName, final int executionTime) {
-		logTaskInfo(taskName, "Execution");
+		logTaskInfo(taskName, EXECUTION);
 
 		try {
 			SECONDS.sleep(executionTime);
