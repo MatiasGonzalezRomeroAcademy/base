@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.academy.base.service.CalculatorService;
 import com.academy.base.service.JpaUserDetailService;
+import com.academy.base.service.ProductService;
 import com.academy.base.service.ProjectService;
 import com.academy.base.service.RoleService;
 import com.academy.base.service.TaskService;
@@ -43,6 +44,9 @@ public abstract class AbstractControllerTest {
 
 	@MockBean
 	protected RoleService RoleService;
+
+	@MockBean
+	protected ProductService ProductService;
 
 	@MockBean
 	protected AuthenticationManager authenticationManager;

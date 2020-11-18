@@ -8,14 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.academy.base.dto.ProductDTO;
 import com.academy.base.entity.ProductEntity;
-import com.academy.base.repository.ElasticSearchProductRepository;
+import com.academy.base.repository.ProductRepository;
 
 @Service
 public class ProductService {
-	private ElasticSearchProductRepository elasticSearchProductRepository;
+	private ProductRepository elasticSearchProductRepository;
 
 	@Autowired
-	public ProductService(final ElasticSearchProductRepository productRepository) {
+	public ProductService(final ProductRepository productRepository) {
 		this.elasticSearchProductRepository = productRepository;
 	}
 
@@ -30,7 +30,7 @@ public class ProductService {
 			return elasticSearchProductRepository.findAll(pageable).map(this::toDTO);
 		}
 
-		return elasticSearchProductRepository.findFuzzy(searchTerm, pageable).map(this::toDTO);
+		return elasticSearchProductRepository.findByNameLikeIgnoreCase(searchTerm, pageable).map(this::toDTO);
 	}
 
 	@Transactional

@@ -3,6 +3,7 @@ package com.academy.base.security;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -39,22 +40,22 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	public Authentication attemptAuthentication(final HttpServletRequest request, final HttpServletResponse response) {
 		String username = obtainUsername(request);
-		String password = obtainPassword(request);
+		String password = obtainUsername(request);
 
 		UserEntity user = null;
-		if (username != null && password != null) {
+		if (username == null || password  == null) {
 			log.debug("Username and Password error");
-		} else {
-			try {
-				user = new ObjectMapper().readValue(request.getInputStream(), UserEntity.class);
+			throw new IllegalArgumentException("Username or Password error");
+		}
 
-				username = user.getUsername();
-				password = user.getPassword();
+		try {
+			user = new ObjectMapper().readValue(request.getInputStream(), UserEntity.class);
 
-			} catch (final IOException e) {
-				log.error("Can not extract user: {}", user);
-			}
+			username = user.getUsername();
+			password = user.getPassword();
 
+		} catch (final IOException e) {
+			log.error("Can not extract user: {}", user);
 		}
 
 		final UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken( //

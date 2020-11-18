@@ -16,6 +16,7 @@
     <include file="/db/changelog/changes/8-create-roles-table-changelog.xml"/>
     <include file="/db/changelog/changes/9-create-images-table-changelog.xml"/>
     <include file="/db/changelog/changes/10-create-products-table-changelog.xml"/>
+    <include file="/db/changelog/changes/11-add-column-deleted-to-rooms-table-changelog.xml"/>
   
     <include file="/db/changelog/data/1-insert-rooms-data.xml"/>
     <include file="/db/changelog/data/2-insert-projects-data.xml"/>
