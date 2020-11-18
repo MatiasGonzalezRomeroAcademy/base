@@ -54,7 +54,6 @@ public class ProjectEntity implements Serializable {
 	public void setTasks(final Set<TaskEntity> tasks) {
 		if (tasks == null) {
 			this.tasks = new HashSet<>();
-			return;
 		}
 
 		this.tasks = tasks.stream() //
