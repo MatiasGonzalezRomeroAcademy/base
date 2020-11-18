@@ -1,10 +1,11 @@
 package com.academy.base.entity;
 
+import static java.util.stream.Collectors.toSet;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -53,6 +54,7 @@ public class ProjectEntity implements Serializable {
 	public void setTasks(final Set<TaskEntity> tasks) {
 		if (tasks == null) {
 			this.tasks = new HashSet<>();
+			return;
 		}
 
 		this.tasks = tasks.stream() //
@@ -61,7 +63,7 @@ public class ProjectEntity implements Serializable {
 					task.setProject(this);
 					return task;
 				}) //
-				.collect(Collectors.toSet());
+				.collect(toSet());
 
 	}
 }
