@@ -36,23 +36,12 @@ jobs:
         run: mvn clean package sonar:sonar -Dsonar.host.url=${{secrets.SONAR_HOST}} -Dsonar.organization=${{secrets.SONAR_ORGANIZATION}} -Dsonar.login=${{secrets.SONAR_TOKEN}} -Dsonar.scanner.force-deprecated-java-version=true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-  deploy: 
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Login to Heroku
-        run: heroku login 
-        env: 
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-      - name: Clear buildpack
-        run: heroku buildpacks:clear --app academy-base-project
-        env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-      - name: Install plugin
-        run: heroku plugins:install heroku-cli-deploy
-        env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-      - name: Deploy
-        run: heroku deploy:war --war ./target --app academy-base-project
-        env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.0.0
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "academy-base-project"
+          heroku_email: "matias+academy@integradevs.com"
