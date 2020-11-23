@@ -46,5 +46,4 @@ public class JpaUserDetailService implements UserDetailsService {
 				authorities //
 		);
 	}
-
 }
