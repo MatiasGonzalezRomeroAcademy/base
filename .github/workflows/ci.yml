@@ -40,19 +40,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Login to Heroku registry
+      - name: Login to Heroku
+        run: heroku login 
         env: 
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-        run: heroku login 
       - name: Clear buildpack
-        env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: heroku buildpacks:clear --app academy-base-project
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
       - name: Install plugin
-        env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: heroku plugins:install heroku-cli-deploy
-      - name: Deploy
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-          run: heroku deploy:war --war ./target --app academy-base-project
+      - name: Deploy
+        run: heroku deploy:war --war ./target --app academy-base-project
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
