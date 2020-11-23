@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.academy.base</groupId>
 	<artifactId>base</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>0.0.1</version>
 	<name>base</name>
 	<description>Demo project for Spring Boot App</description>
