@@ -39,22 +39,22 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	@Override
 	public Authentication attemptAuthentication(final HttpServletRequest request, final HttpServletResponse response) {
 		String username = obtainUsername(request);
-		String password = obtainUsername(request);
+		String password = obtainPassword(request);
 
 		UserEntity user = null;
-		if (username == null || password == null) {
+		if (username != null && password != null) {
 			log.debug("Username and Password error");
-			throw new IllegalArgumentException("Username or Password error");
-		}
+		} else {
+			try {
+				user = new ObjectMapper().readValue(request.getInputStream(), UserEntity.class);
 
-		try {
-			user = new ObjectMapper().readValue(request.getInputStream(), UserEntity.class);
+				username = user.getUsername();
+				password = user.getPassword();
 
-			username = user.getUsername();
-			password = user.getPassword();
+			} catch (final IOException e) {
+				log.error("Can not extract user: {}", user);
+			}
 
-		} catch (final IOException e) {
-			log.error("Can not extract user: {}", user);
 		}
 
 		final UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken( //
